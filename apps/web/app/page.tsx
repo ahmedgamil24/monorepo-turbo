@@ -1,6 +1,8 @@
+"use client"
 import Image, { type ImageProps } from "next/image";
 import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
+import { useEffect } from "react";
 
 type Props = Omit<ImageProps, "src"> & {
   srcLight: string;
@@ -19,6 +21,11 @@ const ThemeImage = (props: Props) => {
 };
 
 export default function Home() {
+  useEffect(() => {
+  fetch("http://localhost:4000")
+    .then(res => res.json())
+    .then(data => console.log(data));
+}, []);
   return (
     <div className={styles.page}>
       <main className={styles.main}>
